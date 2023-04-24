@@ -93,7 +93,17 @@ export const LightTheme = createTheme({
 export const DarkTheme = createTheme({
     palette: {
         mode: 'dark',
-        
+        primary: {
+            main:           '#d3daff',
+        },
+        secondary: {
+            main:           '#48bba3',
+        },
+        background: {
+            default:        '#0a192f',
+            paper:          '#122d55',
+        },
+        tonalOffset: 0.2,
     },
     typography,
 });
