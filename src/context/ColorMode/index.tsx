@@ -6,10 +6,12 @@ type ColorModes = 'light' | 'dark';
 
 interface ColorModeContextProps {
     toggleColorMode: () => void;
+    colorMode: ColorModes;
 }
 
 const INITIAL_VALUES:ColorModeContextProps = {
     toggleColorMode: () => {},
+    colorMode: 'light',
 }
 
 export const ColorModeContext = createContext<ColorModeContextProps>(INITIAL_VALUES);
@@ -52,6 +54,7 @@ export const ColorModeProvider = (props: ColorModeProviderProps) => {
         <ColorModeContext.Provider
             value={{
                 toggleColorMode,
+                colorMode: mode,
             }}
         >
             <ThemeProvider theme={theme} >

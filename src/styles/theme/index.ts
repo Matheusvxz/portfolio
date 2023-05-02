@@ -1,9 +1,28 @@
-import { ThemeOptions, createTheme } from "@mui/material"
+import { BreakpointsOptions, ThemeOptions, createTheme } from "@mui/material"
 import { Montserrat } from "next/font/google";
 
 
 declare module '@mui/material/styles' {
+    interface BreakpointOverrides {
+        xs:         false,
+        sm:         false,
+        md:         false,
+        lg:         false;
+        xl:         false;
+        mobile:     true,
+        tablet:     true,
+        laptop:     true,
+        desktop:    true,
+    }
+}
 
+const breakpoints:BreakpointsOptions = {
+    values: {
+        mobile:     0,
+        tablet:     640,
+        laptop:     1024,
+        desktop:    1200,
+    }
 }
 
 
@@ -84,16 +103,45 @@ const typography:ThemeOptions["typography"] = {
 
 export const LightTheme = createTheme({
     palette: {
-        mode: 'light',
-        
+        mode:               'light',
+        background: {
+            default:        'rgba(255, 255, 255, 1)',
+            paper:          'rgba(255, 255, 255, 0.72)',
+        },
+        text: {
+            primary:        'rgba(0, 0, 0, 1)',
+            disabled:       'rgba(0, 0, 0, 0.4)',
+        },
+        primary: {
+            main:           '#164646',
+            contrastText:   'rgba(255, 255, 255)',
+        },
+        secondary: {
+            main:           '#ff7043',
+            contrastText:   'rgba(255, 255, 255)',
+        },
+        error: {
+            main:           '#ff0000',
+        },
+        warning: {
+            main:           '#fdd835',
+        },
+        info: {
+            main:           '#006296',
+        },
+        success: {
+            main:           '#1c9822',
+        },
+        divider:            'rgba(0, 0, 0, 0.12)',
     },
+    breakpoints,
     typography,
 });
 
 export const DarkTheme = createTheme({
     palette: {
         mode: 'dark',
-        
     },
+    breakpoints,
     typography,
 });
